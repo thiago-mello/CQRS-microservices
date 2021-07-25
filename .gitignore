@@ -1,0 +1,6 @@
+.gradle
+.idea
+.vscode
+axon-server
+data
+plugins

@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  service-discovery:
+    build: ./service-discovery
+    ports:
+      - "127.0.0.1:8761:8761"
+    volumes:
+      - ./service-discovery:/usr/src/service-discovery
+
+  products-microservice:
+    build: ./products-microservice
+    volumes:
+      - ./products-microservice:/usr/src/products-microservice
+    depends_on:
+      - service-discovery
+      - axon-server
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "127.0.0.1:8080:8082"
+    volumes:
+      - ./api-gateway:/usr/src/api-gateway
+    depends_on:
+      - service-discovery
+
+  axon-server:
+    image: axoniq/axonserver
+    ports:
+      - "8024:8024"
