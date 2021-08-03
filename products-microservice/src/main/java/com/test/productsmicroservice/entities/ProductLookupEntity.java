@@ -1,7 +1,5 @@
 package com.test.productsmicroservice.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,16 +8,18 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name = "products")
 @Entity
-public class ProductEntity implements Serializable {
+@Table(name = "product_lookup")
+public class ProductLookupEntity {
+
+  public ProductLookupEntity(String id, String title) {
+    this.id = id;
+    this.title = title;
+  }
 
   @Id
-  @Column(unique = true)
-  private String productId;
+  String id;
 
   @Column(unique = true)
-  private String title;
-  private Double price;
-  private Integer quantity;
+  String title;
 }

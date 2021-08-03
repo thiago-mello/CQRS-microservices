@@ -24,7 +24,6 @@ public class ProductAggregate {
 
   @CommandHandler
   public ProductAggregate(CreateProductCommand createProductCommand) {
-    // TODO: Validate Create Product Command
 
     ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
 
