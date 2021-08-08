@@ -12,6 +12,9 @@ import lombok.Data;
 @Table(name = "product_lookup")
 public class ProductLookupEntity {
 
+  public ProductLookupEntity() {
+  }
+
   public ProductLookupEntity(String id, String title) {
     this.id = id;
     this.title = title;
