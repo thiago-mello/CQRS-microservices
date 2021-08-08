@@ -23,13 +23,15 @@ public class ProductAggregate {
   }
 
   @CommandHandler
-  public ProductAggregate(CreateProductCommand createProductCommand) {
+  public ProductAggregate(CreateProductCommand createProductCommand) throws Exception {
 
     ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
 
     BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
     AggregateLifecycle.apply(productCreatedEvent);
+
+    throw new Exception("Hello test");
   }
 
   @EventSourcingHandler
